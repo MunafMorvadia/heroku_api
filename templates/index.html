@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deeplab App</title>
+</head>
+<body>
+    <h1>Upload an Image</h1>
+    
+    <!-- Display any flash messages -->
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <ul>
+                {% for message in messages %}
+                    <li style="color:red;">{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    {% endwith %}
+    
+    <form method="POST" enctype="multipart/form-data">
+        <input type="text" name="app_key" placeholder="Enter App Key" required>
+        <br><br>
+        <input type="file" name="image" accept="image/*" required>
+        <br><br>
+        <button type="submit">Upload</button>
+    </form>
+
+    {% if image %}
+        <h2>Processed Image</h2>
+        <img src="{{ url_for('static', filename=image) }}" alt="Processed Image">
+    {% endif %}
+</body>
+</html>
