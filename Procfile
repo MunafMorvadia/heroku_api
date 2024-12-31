@@ -1,3 +1,3 @@
 ﻿web:
 gunicorn
-app:bg-remover-api
+app:app.py
