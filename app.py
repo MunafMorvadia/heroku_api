@@ -8,6 +8,7 @@ import string
 import cv2
 from PIL import Image
 from torchvision import transforms
+torch.cuda.empty_cache()
 
 
 # Function to generate a unique filename
@@ -18,7 +19,8 @@ def generate_unique_filename(extension="png"):
 
 
 # Load the pre-trained DeepLabV3 ResNet model
-model = torchvision.models.segmentation.deeplabv3_resnet101(pretrained=True)
+weights = DeepLabV3_ResNet101_Weights.DEFAULT
+model = torchvision.models.segmentation.deeplabv3_resnet101(weights=weights)
 model.eval()
 
 # Preprocess the input image
