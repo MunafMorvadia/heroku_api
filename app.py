@@ -19,9 +19,9 @@ def generate_unique_filename(extension="png"):
 
 
 # Load the pre-trained DeepLabV3 ResNet model
-weights = DeepLabV3_ResNet101_Weights.DEFAULT
-model = torchvision.models.segmentation.deeplabv3_resnet101(weights=weights)
+model = torchvision.models.segmentation.deeplabv3_resnet101(pretrained=True)
 model.eval()
+
 
 # Preprocess the input image
 def preprocess(image):
